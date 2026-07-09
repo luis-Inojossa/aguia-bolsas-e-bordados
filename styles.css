@@ -1874,3 +1874,11 @@ h2 span {
     display: none;
   }
 }
+/* Benefits title color correction */
+#benefits-title .benefits-line {
+  color: var(--graphite);
+}
+
+#benefits-title .benefits-accent {
+  color: var(--orange);
+}
