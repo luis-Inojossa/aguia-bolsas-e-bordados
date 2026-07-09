@@ -1818,3 +1818,37 @@ h2 span {
     scroll-margin-top: 0;
   }
 }
+/* Robust mobile menu open state */
+@media (max-width: 1020px) {
+  .site-header.menu-open {
+    z-index: 120;
+  }
+
+  .site-header.menu-open .nav-links {
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    top: 90px;
+    z-index: 130;
+    display: grid;
+    gap: 0;
+    padding: 12px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--white);
+    box-shadow: var(--shadow);
+  }
+
+  .site-header.menu-open .nav-links a {
+    padding: 14px;
+  }
+}
+
+@media (max-width: 680px) {
+  .site-header.menu-open .nav-links {
+    top: 82px;
+    left: 14px;
+    right: 14px;
+    z-index: 130;
+  }
+}
