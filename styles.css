@@ -1852,3 +1852,25 @@ h2 span {
     z-index: 130;
   }
 }
+/* Mobile benefits title line breaks */
+#benefits-title .benefits-accent {
+  color: var(--orange);
+}
+
+@media (max-width: 680px) {
+  #benefits-title {
+    max-width: 420px;
+    font-size: 43px;
+    line-height: 1.08;
+  }
+
+  #benefits-title .benefits-line,
+  #benefits-title .benefits-accent {
+    display: block;
+  }
+
+  #benefits-title .benefits-comma,
+  #benefits-title .benefits-period {
+    display: none;
+  }
+}
