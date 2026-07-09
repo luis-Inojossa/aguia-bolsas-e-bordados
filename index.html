@@ -95,7 +95,7 @@
           <h2 id="about-title">Cada detalhe carrega uma <span>história.</span></h2>
           <p>A Águia Bolsas e Bordados nasceu do amor pelo artesanato e do desejo de criar peças únicas, feitas com carinho para acompanhar momentos especiais.</p>
           <p>Aqui, cada bolsa é pensada, criada e produzida manualmente, com atenção ao acabamento, à escolha dos materiais e à identidade de cada cliente.</p>
-          <a class="btn btn-primary" href="#personalize">Conheça nossa história</a>
+          <a class="btn btn-primary" href="#personalize">PERSONALIZAR</a>
         </div>
       </div>
     </section>
@@ -314,13 +314,30 @@
   </a>
   <script>
     // Mobile menu close behavior
+    const siteHeader = document.querySelector('.site-header');
     const navToggle = document.getElementById('nav-toggle');
     const navLinks = document.querySelector('.nav-links');
     const navButton = document.querySelector('.nav-menu-button');
     const brandLinks = document.querySelectorAll('.brand[href="#inicio"]');
 
+    function setMobileMenu(open) {
+      if (navToggle) navToggle.checked = open;
+      if (siteHeader) siteHeader.classList.toggle('menu-open', open);
+      if (navButton) navButton.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+
     function closeMobileMenu() {
-      if (navToggle) navToggle.checked = false;
+      setMobileMenu(false);
+    }
+
+    if (navButton) {
+      navButton.setAttribute('role', 'button');
+      navButton.setAttribute('aria-expanded', 'false');
+      navButton.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        setMobileMenu(!(siteHeader && siteHeader.classList.contains('menu-open')));
+      });
     }
 
     document.querySelectorAll('.nav-links a').forEach((link) => {
@@ -332,7 +349,8 @@
     });
 
     document.addEventListener('click', (event) => {
-      if (!navToggle || !navToggle.checked) return;
+      const isOpen = siteHeader && siteHeader.classList.contains('menu-open');
+      if (!isOpen) return;
       const clickedMenu = navLinks && navLinks.contains(event.target);
       const clickedButton = navButton && navButton.contains(event.target);
       if (!clickedMenu && !clickedButton) closeMobileMenu();
